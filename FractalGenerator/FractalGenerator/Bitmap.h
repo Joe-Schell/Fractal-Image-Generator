@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cstdint>
+#include <memory>
 
 namespace bitmapFunctions
 {

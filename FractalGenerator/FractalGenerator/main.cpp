@@ -1,6 +1,8 @@
 
 #include <iostream>
+#include <cstdint>
 #include "Bitmap.h"
+#include "Fractal.h"
 
 using namespace bitmapFunctions;
 
@@ -20,11 +22,17 @@ int main()
 	{
 		for(int x = 0; x < WIDTH; x++)
 		{
-			double xFractal = (x - WIDTH / 2) * 2.0 / WIDTH;
-			double yFractal = (y - HEIGHT / 2) * 2.0 / HEIGHT;
+			double xFractal = (x - WIDTH/2 - 150) * (2.0/WIDTH);
+			double yFractal = (y - HEIGHT/2) * (2.0/HEIGHT);
 
-			if(yFractal < min) min = yFractal;
-			if(yFractal > max) max = yFractal;
+			int iterations = Fractal::getIterations(xFractal, yFractal);
+
+			uint8_t red = (uint8_t)(256 * (double)iterations/Fractal::MAX_ITERATIONS);
+
+			bitmap.setPixel(x, y, red, red, red);
+
+			if(red < min) min = red;
+			if(red > max) max = red;
 		}
 	}
 
@@ -33,6 +41,8 @@ int main()
 	bitmap.write("fractal.bmp");
 
 	std::cout << "Execution Complete!" << std::endl;
+
+	//system("pause");
 
 	return 0;
 }
