@@ -115,10 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bitmapFileHeader.h" />
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="BitmapFileHeader.h" />
     <ClInclude Include="BitmapInfoHeader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

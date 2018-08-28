@@ -1,10 +1,13 @@
 /*
 *  Project:  Fractal Image Generator
-*  Date:  08/27/2018
-*  Author:  Joseph Schell
+*  Date:     08/27/2018
+*  Author:   Joseph Schell
 */
 #include <iostream>
-#include "bitmapFileHeader.h"
+#include "BitmapInfoHeader.h"
+#include "BitmapFileHeader.h"
+
+using namespace bitmapFunctions;
 
 int main()
 {
