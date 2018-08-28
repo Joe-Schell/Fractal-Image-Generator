@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="bitmapFileHeader.h" />
+    <ClInclude Include="BitmapInfoHeader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
