@@ -22,17 +22,19 @@ int main()
 	{
 		for(int x = 0; x < WIDTH; x++)
 		{
-			double xFractal = (x - WIDTH/2 - 150) * (2.0/WIDTH);
+			double xFractal = (x - WIDTH/2 - 200) * (2.0/WIDTH);
 			double yFractal = (y - HEIGHT/2) * (2.0/HEIGHT);
 
 			int iterations = Fractal::getIterations(xFractal, yFractal);
 
-			uint8_t red = (uint8_t)(256 * (double)iterations/Fractal::MAX_ITERATIONS);
+			uint8_t color = (uint8_t)(256 * (double)iterations/Fractal::MAX_ITERATIONS);
 
-			bitmap.setPixel(x, y, red, red, red);
+			color = color * color * color;
 
-			if(red < min) min = red;
-			if(red > max) max = red;
+			bitmap.setPixel(x, y, color, 0, 0);
+
+			if(color < min) min = color;
+			if(color > max) max = color;
 		}
 	}
 
