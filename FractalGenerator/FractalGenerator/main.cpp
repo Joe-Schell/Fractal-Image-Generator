@@ -4,14 +4,17 @@
 *  Author:   Joseph Schell
 */
 #include <iostream>
-#include "BitmapInfoHeader.h"
-#include "BitmapFileHeader.h"
+#include "Bitmap.h"
 
 using namespace bitmapFunctions;
 
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
+	Bitmap bitmap(800, 600);
+
+	bitmap.write("test.bmp");
+
+	std::cout << "Execution Complete!" << std::endl;
 
 	return 0;
 }
