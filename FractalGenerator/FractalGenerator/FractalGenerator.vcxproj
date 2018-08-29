@@ -120,6 +120,7 @@
     <ClInclude Include="BitmapInfoHeader.h" />
     <ClInclude Include="Fractal.h" />
     <ClInclude Include="FractalCreator.h" />
+    <ClInclude Include="RGB.h" />
     <ClInclude Include="Zoom.h" />
     <ClInclude Include="ZoomList.h" />
   </ItemGroup>
@@ -128,6 +129,7 @@
     <ClCompile Include="Fractal.cpp" />
     <ClCompile Include="FractalCreator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RGB.cpp" />
     <ClCompile Include="ZoomList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

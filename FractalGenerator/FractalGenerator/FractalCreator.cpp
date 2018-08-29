@@ -5,13 +5,6 @@ using namespace std;
 
 namespace fractalCore
 {
-
-	void FractalCreator::addZoom(const Zoom& zoom)
-	{
-		m_zoomList.add(zoom);
-	}
-
-
 	FractalCreator::FractalCreator(int width, int height) :
 		m_width(width), m_height(height), m_histogram(
 			new int[Fractal::MAX_ITERATIONS]{0}), m_fractal(
@@ -21,7 +14,24 @@ namespace fractalCore
 		m_zoomList.add(Zoom(m_width / 2, m_height / 2, 4.0 / m_width));
 	}
 
-	FractalCreator::~FractalCreator() {
+	FractalCreator::~FractalCreator() {}
+
+	void FractalCreator::run(std::string name)
+	{
+		addZoom(Zoom(351, 435, 0.1));
+		addZoom(Zoom(512, 265, 0.1));
+		addZoom(Zoom(504, 462, 0.3));
+		addZoom(Zoom(110, 365, 0.005));
+
+		calculateIteration();
+		calculateTotalIterations();
+		drawFractal();
+		writeBitmap(name);
+	}
+
+	void FractalCreator::addZoom(const Zoom& zoom)
+	{
+		m_zoomList.add(zoom);
 	}
 
 	void FractalCreator::calculateIteration()
@@ -78,7 +88,8 @@ namespace fractalCore
 
 	}
 
-	void FractalCreator::writeBitmap(string name) {
+	void FractalCreator::writeBitmap(string name)
+	{
 		m_bitmap.write(name);
 	}
 

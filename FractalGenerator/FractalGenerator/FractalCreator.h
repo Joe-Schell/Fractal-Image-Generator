@@ -10,6 +10,7 @@
 #include "Bitmap.h"
 #include "Zoom.h"
 #include "ZoomList.h"
+#include "RGB.h"
 
 namespace fractalCore
 {
@@ -24,14 +25,16 @@ namespace fractalCore
 		ZoomList m_zoomList;
 		int m_total{0};
 
-	public:
-		FractalCreator(int width, int height);
-		virtual ~FractalCreator();
 		void calculateIteration();
 		void calculateTotalIterations();
 		void drawFractal();
 		void writeBitmap(std::string name);
 		void addZoom(const Zoom& zoom);
+
+	public:
+		FractalCreator(int width, int height);
+		virtual ~FractalCreator();
+		void run(std::string name);
 	};
 }
 
