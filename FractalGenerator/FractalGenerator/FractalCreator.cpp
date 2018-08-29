@@ -1,5 +1,4 @@
 #include "FractalCreator.h"
-#include <assert.h>
 
 namespace fractalCore
 {
@@ -56,27 +55,10 @@ namespace fractalCore
 	
 	}
 
-	void FractalCreator::calculateRangeTotals()
-	{
-		int rangeIndex = 0;
-
-		for(int i = 0; i < Fractal::MAX_ITERATIONS; i++)
-		{
-			int pixels = m_histogram[i];
-
-			if(i >= m_ranges[rangeIndex + 1])
-			{
-				rangeIndex++;
-			}
-
-			m_rangeTotals[rangeIndex] += pixels;
-		}
-	}
-
 	void FractalCreator::drawFractal()
 	{
 		RGB startColor(0, 0, 0);
-		RGB endColor(0, 0, 255);
+		RGB endColor(255, 0, 0);
 		RGB colorDiff = endColor - startColor;
 
 		for(int y = 0; y < m_height; y++)
@@ -98,8 +80,6 @@ namespace fractalCore
 						hue += ((double) m_histogram[i]) / m_total;
 					}
 
-					// pow(255, hue)
-
 					red = startColor.r + pow(colorDiff.r, hue);
 					green = startColor.g + pow(colorDiff.g, hue);
 					blue = startColor.b + pow(colorDiff.b, hue);
@@ -108,48 +88,11 @@ namespace fractalCore
 				m_bitmap.setPixel(x, y, red, green, blue);
 			}
 		}
-
 	}
 
 	void FractalCreator::writeBitmap(std::string name)
 	{
 		m_bitmap.write(name);
-	}
-
-	void FractalCreator::addRange(double rangeEnd, const RGB& rgb)
-	{
-		m_ranges.push_back(rangeEnd * Fractal::MAX_ITERATIONS);
-		m_colors.push_back(rgb);
-
-		if(m_bGotFirstRange)
-		{
-			m_rangeTotals.push_back(0);
-		}
-
-		m_bGotFirstRange = true;
-	}
-
-	int FractalCreator::getRange(int iterations) const
-	{
-		int range = 0;
-
-		for(int i = 1; i < m_ranges.size(); i++)
-		{
-			range = i;
-
-			if(m_ranges[i] > iterations)
-			{
-				break;
-			}
-
-		}
-
-		range--;
-
-		assert(range > -1);
-		assert(range < m_ranges.size());
-
-		return range;
 	}
 }
 

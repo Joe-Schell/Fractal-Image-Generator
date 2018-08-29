@@ -3,8 +3,9 @@
 
 namespace fractalCore
 {
-	struct RGB
+	class RGB
 	{
+	public:
 		double r;
 		double g;
 		double b;

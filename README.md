@@ -24,8 +24,14 @@ After adding color histogram and replacing the red with green:
 
 ### Zoom Function:
 
+Zoomed in 10 times at coords (351, 435):
+
 ![zoom1](https://user-images.githubusercontent.com/24645219/44768335-d621c380-ab15-11e8-94f0-b40e3ac17ba3.jpg)
 
+Color changed to red and image zoomed in 10 more times at coords (512, 256):
+
 ![zoom2](https://user-images.githubusercontent.com/24645219/44768336-d621c380-ab15-11e8-95db-30f707b9b8c9.jpg)
+
+Zoomed in 7 more times at coords (504, 462) and again (7x zoom) at coords (110, 365):
 
 ![zoom3](https://user-images.githubusercontent.com/24645219/44768337-d621c380-ab15-11e8-9b6f-65d3857addf8.jpg)
