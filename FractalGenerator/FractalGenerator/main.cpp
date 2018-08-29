@@ -22,7 +22,12 @@ int main()
 
 	ZoomList zoomList(WIDTH, HEIGHT);
 
-	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 1));
+	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 4.0/WIDTH));
+	zoomList.add(Zoom(351, 435, 0.1));
+	zoomList.add(Zoom(512, 265, 0.1));
+	zoomList.add(Zoom(504, 462, 0.3));
+	zoomList.add(Zoom(110, 365, 0.7));
+
 
 	std::unique_ptr<int[]> histogram(new int[Fractal::MAX_ITERATIONS]{0});
 	std::unique_ptr<int[]> fractal(new int[WIDTH * HEIGHT]);
@@ -31,10 +36,9 @@ int main()
 	{
 		for(int x = 0; x < WIDTH; x++)
 		{
-			double xFractal = (x - WIDTH/2 - 200) * (2.0/WIDTH);
-			double yFractal = (y - HEIGHT/2) * (2.0/HEIGHT);
+			std::pair<double, double> coords = zoomList.doZoom(x, y);
 
-			int iterations = Fractal::getIterations(xFractal, yFractal);
+			int iterations = Fractal::getIterations(coords.first, coords.second);
 
 			fractal[y * WIDTH + x] = iterations;
 			
@@ -65,8 +69,8 @@ int main()
 				hue += ((double) histogram[i]) / total;
 			}
 
-			uint8_t red = 0;
-			uint8_t green = pow(255, hue);
+			uint8_t red = pow(255, hue);
+			uint8_t green = 0;
 			uint8_t blue = 0;
 
 			bitmap.setPixel(x, y, red, green, blue);
