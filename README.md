@@ -4,7 +4,7 @@ Program written in C++ that generates fractal images (In Progress)
 
 ## Screenshots:
 
-# Early Stages:
+### Early Stages:
 
 First dot written (small white pixel in middle of image):
 

@@ -119,11 +119,14 @@
     <ClInclude Include="BitmapFileHeader.h" />
     <ClInclude Include="BitmapInfoHeader.h" />
     <ClInclude Include="Fractal.h" />
+    <ClInclude Include="Zoom.h" />
+    <ClInclude Include="ZoomList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Fractal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ZoomList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

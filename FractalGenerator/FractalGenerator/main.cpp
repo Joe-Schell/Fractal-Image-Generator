@@ -5,6 +5,8 @@
 #include <math.h>
 #include "Bitmap.h"
 #include "Fractal.h"
+#include "Zoom.h"
+#include "ZoomList.h"
 
 using namespace bitmapFunctions;
 
@@ -17,6 +19,10 @@ int main()
 
 	double min = 999999;
 	double max = -999999;
+
+	ZoomList zoomList(WIDTH, HEIGHT);
+
+	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 1));
 
 	std::unique_ptr<int[]> histogram(new int[Fractal::MAX_ITERATIONS]{0});
 	std::unique_ptr<int[]> fractal(new int[WIDTH * HEIGHT]);
