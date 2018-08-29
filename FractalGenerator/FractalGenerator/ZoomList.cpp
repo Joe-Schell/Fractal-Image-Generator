@@ -1,6 +1,6 @@
 #include "ZoomList.h"
 
-namespace bitmapFunctions
+namespace fractalCore
 {
 	ZoomList::ZoomList(int width, int height) :
 		m_width(width), m_height(height) {}

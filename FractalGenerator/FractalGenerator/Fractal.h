@@ -1,7 +1,7 @@
 #ifndef FRACTAL_H_
 #define FRACTAL_H_
 
-namespace bitmapFunctions
+namespace fractalCore
 {
 	class Fractal
 	{

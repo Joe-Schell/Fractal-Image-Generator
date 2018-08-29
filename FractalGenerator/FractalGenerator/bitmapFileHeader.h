@@ -5,7 +5,7 @@
 
 #pragma pack(2)
 
-namespace bitmapFunctions
+namespace fractalCore
 {
 	struct BitmapFileHeader
 	{

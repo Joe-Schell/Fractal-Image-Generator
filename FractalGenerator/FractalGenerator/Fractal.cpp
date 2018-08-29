@@ -1,7 +1,7 @@
 #include <complex>
 #include "Fractal.h"
 
-namespace bitmapFunctions
+namespace fractalCore
 {
 	Fractal::Fractal()
 	{

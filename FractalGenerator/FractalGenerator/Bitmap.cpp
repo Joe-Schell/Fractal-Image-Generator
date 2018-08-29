@@ -3,9 +3,9 @@
 #include "BitmapInfoHeader.h"
 #include "BitmapFileHeader.h"
 
-using namespace bitmapFunctions;
+using namespace fractalCore;
 
-namespace bitmapFunctions {
+namespace fractalCore {
 
 	Bitmap::Bitmap(int width, int height) : m_width(width),
 		m_height(height), m_pPixels(new uint8_t[width * height * 3]{})

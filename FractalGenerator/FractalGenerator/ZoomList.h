@@ -5,7 +5,7 @@
 #include <utility>
 #include "Zoom.h"
 
-namespace bitmapFunctions
+namespace fractalCore
 {
 	class ZoomList
 	{
