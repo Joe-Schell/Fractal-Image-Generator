@@ -13,7 +13,6 @@ namespace fractalCore
 	};
 
 	RGB operator-(const RGB& first, const RGB& second);
-
 }
 
 #endif // RGB_H_
