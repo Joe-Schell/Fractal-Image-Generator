@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <cstdint>
+#include <memory>
+#include <math.h>
 #include "Bitmap.h"
 #include "Fractal.h"
 
@@ -13,10 +15,11 @@ int main()
 
 	Bitmap bitmap(WIDTH, HEIGHT);
 
-	//bitmap.setPixel(WIDTH / 2, HEIGHT / 2, 255, 255, 255);
-
 	double min = 999999;
 	double max = -999999;
+
+	std::unique_ptr<int[]> histogram(new int[Fractal::MAX_ITERATIONS]{0});
+	std::unique_ptr<int[]> fractal(new int[WIDTH * HEIGHT]);
 
 	for (int y = 0; y < HEIGHT; y++)
 	{
@@ -27,18 +30,42 @@ int main()
 
 			int iterations = Fractal::getIterations(xFractal, yFractal);
 
-			uint8_t color = (uint8_t)(256 * (double)iterations/Fractal::MAX_ITERATIONS);
-
-			color = color * color * color;
-
-			bitmap.setPixel(x, y, color, 0, 0);
-
-			if(color < min) min = color;
-			if(color > max) max = color;
+			fractal[y * WIDTH + x] = iterations;
+			
+			if (iterations != Fractal::MAX_ITERATIONS)
+			{
+				histogram[iterations]++;
+			}
 		}
 	}
 
-	std::cout << min << ", " << max << std::endl;
+	int total = 0;
+
+	for (int i = 0; i < Fractal::MAX_ITERATIONS; i++)
+	{
+		total += histogram[i];
+	}
+	
+	for(int y = 0; y < HEIGHT; y++)
+	{
+		for(int x = 0; x < WIDTH; x++)
+		{
+			int iterations = fractal[y * WIDTH + x];
+
+			double hue = 0.0;
+
+			for (int i = 0; i <= iterations; i++)
+			{
+				hue += ((double) histogram[i]) / total;
+			}
+
+			uint8_t red = 0;
+			uint8_t green = pow(255, hue);
+			uint8_t blue = 0;
+
+			bitmap.setPixel(x, y, red, green, blue);
+		}
+	}
 
 	bitmap.write("fractal.bmp");
 
